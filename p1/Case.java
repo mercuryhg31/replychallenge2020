@@ -3,23 +3,23 @@ package p1;
 import java.util.ArrayList;
 
 public class Case {
-    private int numOfTeams;
-    private int numOfLogs;
+    private int numTeams;
+    private int numLogs;
     private ArrayList<Log> logs;
     private ArrayList<Team> teams;
 
     public Case(int numOfTeams, int numOfLogs, ArrayList<Log> logs) {
-        this.numOfTeams = numOfTeams;
-        this.numOfLogs = numOfLogs;
+        this.numTeams = numOfTeams;
+        this.numLogs = numOfLogs;
         this.logs = logs;
     }
     
-    public int getNumOfTeams() {
-        return numOfTeams;
+    public int getNumTeams() {
+        return numTeams;
     }
 
-    public int getNumOfLogs() {
-        return numOfLogs;
+    public int getNumLogs() {
+        return numLogs;
     }
 
     public ArrayList<Log> getLogs() {
