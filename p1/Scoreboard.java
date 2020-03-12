@@ -15,6 +15,12 @@ public class Scoreboard {
     public static void main(String[] args) {
         Scoreboard scoreBoard = new Scoreboard();
         scoreBoard.setCases();
+        scoreBoard.setTeamInfo();
+        for (int i = 0; i < scoreBoard.cases.size(); i++) {
+            for (int j = 0; j < scoreBoard.cases.get(i).getTeams().size(); j++) {
+                System.out.printf("ID: %d, PEN: %d, FUCK: %d\n", scoreBoard.cases.get(i).getTeams().get(j).getTeamId(), scoreBoard.cases.get(i).getTeams().get(j).getPenaltyTime(), scoreBoard.cases.get(i).getTeams().get(j).getScore());
+            }
+        }
 
     }
 
@@ -70,14 +76,17 @@ public class Scoreboard {
             for (int j = 0; j < caseLogs.size(); j++) {
                 if (caseLogs.get(i).isScored()) {
                     int teamId = caseLogs.get(i).getTeamId();
-                    int addScore = caseLogs.get(i).getInputId() * 100;
 
-                    int currentScore = caseTeams.get(teamId - 1).getScore();
-                    caseTeams.get(teamId - 1).setScore(currentScore + addScore);
+                    int addScore = caseLogs.get(i).getInputId() * 100;
+                    caseTeams.get(teamId - 1).addToScore(addScore);
+                    if (caseLogs.get(i).getTimestamp() > caseTeams.get(teamId - 1).getPenaltyTime()) {
+                        caseTeams.get(teamId - 1).setPenaltyTime(caseLogs.get(i).getTimestamp());
+                    }
 
                     
                 }
             }
+            cases.get(i).setTeams(caseTeams);
         }
     }
 }
