@@ -42,6 +42,12 @@ public class Case {
         return 0;
     }
 
+    /**
+     * Get team by team id from ArrayList of Teams
+     * 
+     * @param id
+     * @return corresponding team
+     */
     public Team getTeam(int id) {
         for (Team team : teams) {
             if (team.getTeamId() == id) return team;
