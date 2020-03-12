@@ -1,3 +1,5 @@
+package p1;
+
 public class Team {
     private int teamId;
     private int penaltyTime;
