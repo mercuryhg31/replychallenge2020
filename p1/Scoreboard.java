@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class Scoreboard {
     
-    public ArrayList<int[]> input = getLines(); // TODO set to info read from input.txt
-    public int numCases = input.get(0)[0]; // TODO set to first num from input
+    public ArrayList<int[]> input = getLines();
+    public int numCases = input.get(0)[0];
     public ArrayList<Case> cases = new ArrayList<Case>();
 
     public static void main(String[] args) {

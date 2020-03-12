@@ -31,8 +31,32 @@ public class Case {
         return teams;
     }
 
+<<<<<<< HEAD
     public void setTeams(ArrayList<Team> teams) {
         this.teams = teams;
+=======
+    public int goThroughLog(Log log) { // TODO tbd
+        Team team = getTeam(log.getTeamId());
+        if (team == null) return 1;
+        if (log.isScored()) {
+            team.addToScore(log.getInputId() * 100);
+            team.setPenaltyTime(log.getTimestamp());
+        }
+
+        return 0;
+    }
+
+    /**
+     * Get team by team id from ArrayList of Teams
+     * 
+     * @param id
+     * @return corresponding team
+     */
+    public Team getTeam(int id) {
+        for (Team team : teams) {
+            if (team.getTeamId() == id) return team;
+        } return null;
+>>>>>>> 6635fc9a1cb3e70442c732e475dd3061a58f2db9
     }
 
 }
