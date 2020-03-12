@@ -8,7 +8,7 @@ public class Case {
     private ArrayList<Log> logs;
     private ArrayList<Team> teams;
 
-    public Case(int numOfTeams, int numOfLogs, ArrayList<Log> logs) {
+    public Case(int numOfTeams, int numOfLogs, ArrayList<Log> logs, ArrayList<Team> teams) {
         this.numOfTeams = numOfTeams;
         this.numOfLogs = numOfLogs;
         this.logs = logs;
