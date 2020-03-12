@@ -31,4 +31,21 @@ public class Case {
         return teams;
     }
 
+    public int goThroughLog(Log log) { // TODO tbd
+        Team team = getTeam(log.getTeamId());
+        if (team == null) return 1;
+        if (log.isScored()) {
+            team.addToScore(log.getInputId() * 100);
+            team.setPenaltyTime(log.getTimestamp());
+        }
+
+        return 0;
+    }
+
+    public Team getTeam(int id) {
+        for (Team team : teams) {
+            if (team.getTeamId() == id) return team;
+        } return null;
+    }
+
 }
