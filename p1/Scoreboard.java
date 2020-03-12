@@ -12,7 +12,9 @@ public class Scoreboard {
     public int numCases = input.get(0)[0]; // TODO set to first num from input
     public ArrayList<Case> cases = new ArrayList<Case>();
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
+        Scoreboard scoreBoard = new Scoreboard();
+        scoreBoard.setCases();
 
     }
 
@@ -57,6 +59,24 @@ public class Scoreboard {
                     logs.add(new Log(input.get(j)[0], input.get(j)[1], input.get(j)[2], input.get(j)[3], input.get(j)[4]));
                 }
                 cases.add(new Case(numTeams, numLogs, logs, teams));
+            }
+        }
+    }
+
+    public void setTeamInfo() {
+        for (int i = 0; i < cases.size(); i++) {
+            ArrayList<Log> caseLogs = cases.get(i).getLogs();
+            ArrayList<Team> caseTeams = cases.get(i).getTeams();
+            for (int j = 0; j < caseLogs.size(); j++) {
+                if (caseLogs.get(i).isScored()) {
+                    int teamId = caseLogs.get(i).getTeamId();
+                    int addScore = caseLogs.get(i).getInputId() * 100;
+
+                    int currentScore = caseTeams.get(teamId - 1).getScore();
+                    caseTeams.get(teamId - 1).setScore(currentScore + addScore);
+
+                    
+                }
             }
         }
     }

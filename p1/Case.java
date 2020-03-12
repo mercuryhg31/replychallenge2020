@@ -31,4 +31,8 @@ public class Case {
         return teams;
     }
 
+    public void setTeams(ArrayList<Team> teams) {
+        this.teams = teams;
+    }
+
 }
