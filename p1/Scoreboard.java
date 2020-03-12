@@ -1,16 +1,43 @@
 package p1;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Scoreboard {
+    
+    public ArrayList<int[]> input; // TODO set to info read from input.txt
+    public int numCases = 0; // TODO set to first num from input
+    public ArrayList<Case> cases = new ArrayList<Case>();
 
     public void main(String[] args) {
 
     }
 
-    public ArrayList<int[]> input; // TODO set to info read from input.txt
-    public int numCases = 0; // TODO set to first num from input
-    public ArrayList<Case> cases = new ArrayList<Case>();
+    private static ArrayList<int[]> getLines() {
+        ArrayList<int[]> fileByLine  = new ArrayList<int[]>();
+        String line;
+        StringBuffer oneLineWonder = new StringBuffer();
+        try(BufferedReader br = new BufferedReader(new FileReader(new File("input.txt")))) {
+           while ((line = br.readLine()) != null) {
+              oneLineWonder.append(line);
+              oneLineWonder.append(";");
+           }
+           for(String caseOrLog : oneLineWonder.toString().split(";")) {
+              String[] sArray = caseOrLog.split(" ");
+              int[] intArray = new int[sArray.length];
+              for (int i = 0; i < sArray.length; i++) {
+                 intArray[i] = Integer.parseInt(sArray[i]);
+              }
+              fileByLine.add(intArray);
+           }
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+        return fileByLine;
+    }
 
     public void setCases() {
         for (int i = 1; i < input.size(); i++){
@@ -29,6 +56,7 @@ public class Scoreboard {
                     }
                     logs.add(new Log(input.get(j)[0], input.get(j)[1], input.get(j)[2], input.get(j)[3], input.get(j)[4]));
                 }
+                cases.add(new Case(numTeams, numLogs, logs, teams));
             }
         }
     }
